@@ -1,7 +1,7 @@
 package escola.musica.modelo;
 
 public enum TipoCurso {
-	CORDAS("Cordas"), MADEIRAS("Madeiras"), METAIS("Metais"), PERCURSSAO("Precurssão");
+	CORDAS("Cordas"), MADEIRAS("Madeiras"), METAIS("Metais"), PERCUSSAO("Precurssão");
 
 	private String label;
 

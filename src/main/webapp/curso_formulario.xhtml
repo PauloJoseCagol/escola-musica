@@ -14,8 +14,7 @@
 		<p:panel header="Cadastro de Cursos" style="width:60%;">
 			<p:panelGrid columns="2" style="width:95%;">
 				<h:outputLabel value="Nome:" />
-				<p:inputText value="#{cursoBean.curso.nome}" required="true"
-					requiredMessage="Verefique o nome do curso!" />
+				<p:inputText value="#{cursoBean.curso.nome}" />
 				<h:outputLabel value="Descrição:" />
 				<p:inputTextarea value="#{cursoBean.curso.descricao}" cols="40"
 					rows="3" maxlength="255" />
@@ -31,7 +30,7 @@
 				</p:selectOneMenu>
 				<h:outputLabel value="Data de Criação:" />
 				<p:calendar value="#{cursoBean.curso.dataCriacao}"
-					pattern="dd/MM/yyyy" mindate="#{cursoBean.dateNow}" />
+					pattern="dd/MM/yyyy" maxdate="#{cursoBean.dateNow}" />
 			</p:panelGrid>
 			<br />
 			<p:commandButton value="Salvar" action="#{cursoBean.salvar}"
