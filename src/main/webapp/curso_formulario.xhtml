@@ -10,10 +10,12 @@
 </h:head>
 <h:body>
 	<h:form>
+		<p:growl />
 		<p:panel header="Cadastro de Cursos" style="width:60%;">
 			<p:panelGrid columns="2" style="width:95%;">
 				<h:outputLabel value="Nome:" />
-				<p:inputText value="#{cursoBean.curso.nome}" />
+				<p:inputText value="#{cursoBean.curso.nome}" required="true"
+					requiredMessage="Verefique o nome do curso!" />
 				<h:outputLabel value="Descrição:" />
 				<p:inputTextarea value="#{cursoBean.curso.descricao}" cols="40"
 					rows="3" maxlength="255" />

@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import escola.musica.dao.CursoDAO;
 import escola.musica.modelo.Curso;
 import escola.musica.modelo.TipoCurso;
 
@@ -25,6 +26,7 @@ public class CursoBean {
 	private List<Curso> cursos = new ArrayList<Curso>();
 
 	public String salvar() {
+		new CursoDAO().salvar(curso);
 		// Adicionando na lista o nome curso.
 		cursos.add(curso);
 		// Limapando o curso depois de adicionar.
