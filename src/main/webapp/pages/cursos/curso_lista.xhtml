@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<p:panel header="Cursos Cadastrados"
+	rendered="#{cursoBean.curso == null}">
+	<p:commandButton icon="fa fa-plus" value="Novo Curso"
+		action="#{cursoBean.newCurso}" update="curso_form" />
+	<br />
+	<br />
+	<p:dataTable value="#{cursoBean.cursos}" var="curso" paginator="true"
+		rows="10" paginatorPosition="top" rowsPerPageTemplate="5, 10, 15"
+		id="tabela">
+
+		<p:column headerText="Nome" sortBy="#{curso.nome}"
+			filterBy="#{curso.nome}" filterMatchMode="contains">
+			<h:outputText value="#{curso.nome}" />
+		</p:column>
+
+		<p:column headerText="Duração" sortBy="#{curso.duracao}">
+			<h:outputText value="#{curso.duracao}" />
+		</p:column>
+
+		<p:column headerText="Data Criação" sortBy="#{curso.dataCriacao}">
+			<h:outputText value="#{curso.dataCriacao}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:outputText>
+		</p:column>
+
+		<p:column headerText="Tipo" sortBy="#{curso.tipo.label}">
+			<h:outputText value="#{curso.tipo.label}" />
+		</p:column>
+
+		<p:column style="text-align:center;">
+			<p:commandButton icon="fa fa-fw fa-edit"
+				action="#{cursoBean.editar(curso)}" style="color:blue;"
+				update=":curso_form" />
+			<p:commandButton icon="fa fa-fw fa-trash"
+				actionListener="#{cursoBean.setCursoExclusao(curso)}"
+				oncomplete="PF('confirmarExclusaoDialog').show();"
+				style="color:red; margin-left:20px;" update="@form" />
+		</p:column>
+	</p:dataTable>
+	<p:confirmDialog
+		message="Deseja realmente excluir o curso #{cursoBean.cursoExclusao.nome}?"
+		widgetVar="confirmarExclusaoDialog">
+		<p:commandButton value="Sim" action="#{cursoBean.excluir()}"
+			ooncomplete="PF('confirmarExclusaoDialog').hide();" update="@form" />
+		<p:commandButton value="Não"
+			oncomplete="PF('confirmarExclusaoDialog').hide();" />
+	</p:confirmDialog>
+</p:panel>
+</html>

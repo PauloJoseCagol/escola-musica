@@ -36,11 +36,19 @@ public class CursoDAO {
 		entityManager.remove(curso);
 		entityManager.getTransaction().commit();
 		entityManager.close();
-
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Curso> getCursos() {
-		return entityManager.createQuery("from Curso").getResultList();
+		return entityManager.createQuery("from Curso order by nome").getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Curso> getCursosAccordion() {
+		// TODO Auto-generated method stub
+		return entityManager
+				.createQuery("from Curso where nome in ('Violino', "
+						+ "'Bateria', 'Clarinete', 'Flauta', 'Guitarra', 'Violão', 'Oboé') order by nome")
+				.getResultList();
 	}
 }

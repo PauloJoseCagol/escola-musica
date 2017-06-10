@@ -22,36 +22,52 @@ public class CursoBean {
 	private Curso curso;
 	private List<TipoCurso> tipos = Arrays.asList(TipoCurso.values());
 	private List<Curso> cursos = new ArrayList<Curso>();
+	private List<Curso> cursosAccordion = new ArrayList<Curso>();
+	private Curso cursoExclusao;
 
-	public CursoBean() {
-		// TODO Auto-generated constructor stub
+
+	public Curso getCursoExclusao() {
+		return cursoExclusao;
+	}
+
+	public void setCursoExclusao(Curso cursoExclusao) {
+		this.cursoExclusao = cursoExclusao;
+		System.out.println(this.cursoExclusao);
+	}
+
+	public void init() {
 		cursos = new CursoDAO().getCursos();
+		cursosAccordion = new CursoDAO().getCursosAccordion();
+	}
+
+	public void newCurso() {
 		curso = new Curso();
 	}
 
-	public String salvar() {
+	public void salvar() {
 		new CursoDAO().salvar(curso);
 		// Adicionando na lista o nome curso.
 		cursos = new CursoDAO().getCursos();
 		// Limapando o curso depois de adicionar.
-		curso = new Curso();
+		curso = null;
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Salvo com sucesso!"));
-
-		return "curso_lista?faces-redirect=true";
 	}
 
-	public String editar(Curso curso) {
+	public void voltar() {
+		curso = null;
+	}
+
+	public void editar(Curso curso) {
 		this.curso = curso;
 		System.out.println(curso);
-		return "curso_formulario?faces-redirect=true";
 	}
 
 	public void excluir() {
-		new CursoDAO().exlcuir(curso);
+		//System.out.println(cursoExclusao);
+		new CursoDAO().exlcuir(cursoExclusao);
 		// Adicionando na lista o nome curso.
 		cursos = new CursoDAO().getCursos();
-		FacesContext.getCurrentInstance()
-		.addMessage(null, new FacesMessage("Curso " + curso.getNome() + " excluido!"));
+		//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Curso " + curso.getNome() + " excluido!"));
 	}
 
 	public String getDateNow() {
@@ -81,4 +97,13 @@ public class CursoBean {
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
 	}
+
+	public List<Curso> getCursosAccordion() {
+		return cursosAccordion;
+	}
+
+	public void setCursosAccordion(List<Curso> cursosAccordion) {
+		this.cursosAccordion = cursosAccordion;
+	}
+
 }
