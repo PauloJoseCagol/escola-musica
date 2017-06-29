@@ -18,6 +18,14 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- Dependencias do Hibernate -->
 		<dependency>
@@ -90,6 +98,18 @@
 			<artifactId>primefaces</artifactId>
 			<version>6.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.8</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/bootstrap -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
 		<!-- POI Dependecia pra exportar data_tables -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -113,7 +133,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- Prettyfaces-jsf2 Urls amigáveis-->
+		<!-- Prettyfaces-jsf2 Urls amigáveis -->
 		<dependency>
 			<groupId>com.ocpsoft</groupId>
 			<artifactId>prettyfaces-jsf2</artifactId>

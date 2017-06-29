@@ -9,10 +9,16 @@
 		<view-id value="/pages/cursos/curso_accordion.jsf" />
 		<action onPostback="false">#{cursoBean.init}</action>
 	</url-mapping>
+
 	<url-mapping id="cursomanutencao">
 		<pattern value="/curso/manutencao/" />
 		<view-id value="/pages/cursos/curso_wrapper.jsf" />
 		<action onPostback="false">#{cursoBean.init}</action>
 	</url-mapping>
 
+	<url-mapping id="alunoomanutencao">
+		<pattern value="/aluno/manutencao/" />
+		<view-id value="/pages/alunos/aluno_wrapper.jsf" />
+		<action onPostback="false">#{alunoBean.init}</action>
+	</url-mapping>
 </pretty-config>

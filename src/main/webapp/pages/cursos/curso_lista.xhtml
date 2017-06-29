@@ -13,7 +13,7 @@
 		action="#{cursoBean.newCurso}" update="curso_form" />
 	<br />
 	<br />
-	<p:dataTable value="#{cursoBean.cursos}" var="curso" paginator="true"
+	<p:dataTable value="#{cursoBean.cursos}" var="curso" paginator="true" filteredValue="#{cursoBean.cursosFiltrados}"
 		rows="10" paginatorPosition="top" rowsPerPageTemplate="5, 10, 15"
 		id="tabela">
 

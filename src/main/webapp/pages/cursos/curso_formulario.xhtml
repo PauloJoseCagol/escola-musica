@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 	<p:panel header="Cadastro de Cursos" style="width:60%;"
-		rendered="#{cursoBean.curso != null}">
+		rendered="#{cursoBean.curso != null}" id="panel_curso">
 		<p:panelGrid columns="2" style="width:95%;">
 			<h:outputLabel value="Nome:" />
 			<p:inputText value="#{cursoBean.curso.nome}" />
@@ -33,8 +33,9 @@
 		</p:panelGrid>
 		<br />
 		<p:commandButton value="Salvar" icon="fa fa-fw fa-save"
-			action="#{cursoBean.salvar}" update="@form" />
+			action="#{cursoBean.salvar}" update="@form" id="botao_salvar"/>
 		<p:commandButton value="Voltar" action="#{cursoBean.voltar}" immediate="true" update="@form"/>
+		<p:blockUI block="panel_curso" trigger="botao_salvar"  />
 	</p:panel>
 </h:body>
 </html>

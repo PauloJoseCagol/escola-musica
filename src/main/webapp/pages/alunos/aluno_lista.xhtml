@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<p:panel header="Alunos Cadastrados"
+	rendered="#{alunoBean.aluno == null}">
+	<p:commandButton icon="fa fa-plus" value="Novo Aluno"
+		action="#{alunoBean.newAluno}" update="aluno_form" />
+	<br />
+	<br />
+	<p:dataTable value="#{alunoBean.alunos}" var="aluno" paginator="true"
+		filteredValue="#{cursoBean.cursosFiltrados}" rows="10"
+		paginatorPosition="top" rowsPerPageTemplate="5, 10, 15">
+		<p:column headerText="Nome" style="width:300px">
+			<h:outputText value="#{aluno.nome}" />
+		</p:column>
+		<p:column headerText="CPF" style="width:200px">
+			<h:outputText value="#{aluno.cpf}" />
+		</p:column>
+		<p:column headerText="Email" style="width:250px">
+			<h:outputText value="#{aluno.email}" />
+		</p:column>
+		<p:column headerText="Telefone" style="width:100px">
+			<h:outputText value="#{aluno.telefone}" />
+		</p:column>
+		<p:column headerText="Data Nascimento" style="width:100px">
+			<h:outputText value="#{aluno.dataNasciemento}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:outputText>
+		</p:column>
+		<p:column headerText="Ativo" style="width:60px">
+			<h:outputText value="#{aluno.ativo ? 'Sim' : 'Não'}" />
+		</p:column>
+		<p:column style="text-align:center; width:88px;">
+			<p:column style="width:60px; text-align:center;">
+				<p:commandButton icon="editar-icon"
+					action="#{alunoBean.editar(aluno)}" update=":aluno_form" />
+			</p:column>
+		</p:column>
+	</p:dataTable>
+</p:panel>
+</html>
