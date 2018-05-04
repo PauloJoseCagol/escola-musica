@@ -133,12 +133,5 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- Prettyfaces-jsf2 Urls amigáveis -->
-		<dependency>
-			<groupId>com.ocpsoft</groupId>
-			<artifactId>prettyfaces-jsf2</artifactId>
-			<version>3.3.3</version>
-		</dependency>
-
 	</dependencies>
 </project>
